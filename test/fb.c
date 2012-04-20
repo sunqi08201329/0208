@@ -136,7 +136,6 @@ int fb_test(void)
 	/* line test*/
 //	p.x = 0; p.y = 200;
 //	p2.x = 1280, p2.y = 200;
-	//int fb_pixel_full(fb_info fb_inf, int x, int y, int high, u32_t color)
 	fb_pixel_rectangle(fb_inf, 0, 0, fb_inf.w, fb_inf.h, 0x00FF00);
 	fb_pixel_row(fb_inf, 0, fb_inf.h/2, fb_inf.w, 0xFF0000);
 	fb_pixel_col(fb_inf, fb_inf.w/2, 0, fb_inf.h, 0xFF0000);

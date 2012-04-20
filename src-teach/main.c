@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 #include "common.h"
 
 /* main function */
@@ -18,7 +16,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	
-	//display_jpeg(argv[1], fb_inf);
+	display_jpeg(argv[1], fb_inf);
 //	system("./mp3 2.mp3");
 	
 //while(1);

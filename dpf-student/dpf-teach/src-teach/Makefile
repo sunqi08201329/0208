@@ -7,14 +7,14 @@ target = main
 
 CC = gcc
 #CC = arm-linux-gcc
-#CFLAGS = -Wall -g -c -I../jpeg-8/ -I../freetype-2.3.11/include
-#LDFLAGS = -L../jpeg-8/.libs/ -ljpeg -L../freetype-2.3.11/objs/.libs -lfreetype
-CFLAGS = -Wall -g -c -I../jpeg-8/ 
-LDFLAGS = -L../jpeg-8/.libs/ -ljpeg 
+CFLAGS = -Wall -g -c -I../jpeg-8/ -I../freetype-2.3.11/include
+LDFLAGS = -L../jpeg-8/.libs/ -ljpeg -L../freetype-2.3.11/objs/.libs -lfreetype
+#CFLAGS = -Wall -g -c -I../jpeg-8/ 
+#LDFLAGS = -L../jpeg-8/.libs/ -ljpeg 
 
 all: $(target)
 
-$(target): $(obj)
+$(target): $(obj) 
 	$(CC) -o $@ $^ $(LDFLAGS)
 $(DIR)%.o:%.c
 	$(CC) -o $@ $(CFLAGS) $< 

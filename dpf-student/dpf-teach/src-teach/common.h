@@ -39,6 +39,8 @@ extern u8_t * scale24(u8_t *buf24, fb_info new_inf, fb_info jpeg_inf);
 /* ******************** disp_jpeg.c ******************** */
 /* display jpeg */
 extern int display_jpeg(char *filename, fb_info fb_inf);
+extern int display_jpeg1(char *filename, fb_info fb_inf);
+extern int display_jpeg_recangle(char *filename, fb_info fb_inf, int sx, int sy, int sizeofstr, int len_of_aword);
 
 
 /* ******************** font.c ******************** */
