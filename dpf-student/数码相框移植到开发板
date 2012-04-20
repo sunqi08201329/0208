@@ -1,0 +1,23 @@
+PC机版本数码相框移植到6410开发板
+1.连接好开发板串口线，网口线，电源线；
+2.在PC机linux中启动minicom（串口通讯工具）；
+3.启动开发板电源，开发板加载linux，加载信息通过串口打印到minicom上，如minicom不输出信息，检查minicom检测的端口是否正确，通常情况下设置监测端口是/dev/ttyS0，如不是用“minicom -s”来设置;
+4.交叉编译下载，把pc机端的程序通过arm-linux-gcc编译，把编译生成的ARM可执行程序下载到开发板端执行；有三种常用方法，第一种，把文件从PC机拷贝到SD卡中，把SD卡插入开发板，重启，开发板中的linux实现了对SD卡的读写。第二种，ftp下载，主机配置ftp服务，开发板这端ftp登录下载文件。第三种，NFS系统，主机下载nfs-kernel-server服务，配置/etc/exports文件，添加“/home/xwp/nfs *(rw,sync,no_root_squash)”，重启"/etc/init.d/nfs-kernel-server restart",开发板这端执行挂在nfs网络文件系统“mount -o nolock -o tcp -t nfs IP:/home/xwp/nfs /mnt"，挂在到开发板/mnt目录下；
+5.PC机端把要编译的目录拷贝到nfs目录下；
+6.例编译图片库，在jpeg-8目录下
+	make distclean
+	./configure --host=arm-linux
+	make
+	查看.libs目录下生成的文件是否是ARM指令文件
+	如在编译时找不到arm-linux-gcc请网上下载arm交叉编译工具链，解压后，把bin目录添加到～/.bashrc文件里
+	“export PATH=$PATH:/opt/arm/4.3.2/bin"
+7.在PC机上自己Makefile工程里的CC改成arm-linux-gcc重新编译；
+8.在启动minicom的终端进入/mnt目录，执行交叉编译好的文件，如显示图片则成功。
+
+另：
+1.开发板上显示图片模糊，修改display-jpeg.c中rgb24to32函数为rgb24to16,且前面的指针类型改为u16_t。
+2.板子可接交换机，其他主机通过telnet服务登录到板子端进行开发。开发板上的telnet服务是telnetd。
+
+
+
+
