@@ -1,0 +1,708 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11">
+ 
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>记录点滴  » Blog Archive   » 怎么使用libmad</title>
+
+<meta name="generator" content="WordPress 2.9.2"> <!-- leave this for stats -->
+
+<link rel="stylesheet" href="%E8%AE%B0%E5%BD%95%E7%82%B9%E6%BB%B4%20%C2%BB%20Blog%20Archive%20%C2%BB%20%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8libmad_files/style.css" type="text/css" media="screen">
+<link rel="alternate" type="application/rss+xml" title="记录点滴 RSS Feed" href="http://liupingjing.oldblog.ubuntu.org.cn/?feed=rss2">
+<link rel="pingback" href="http://liupingjing.oldblog.ubuntu.org.cn/xmlrpc.php">
+
+<!--  pretty code adds -->
+<link rel="stylesheet" href="%E8%AE%B0%E5%BD%95%E7%82%B9%E6%BB%B4%20%C2%BB%20Blog%20Archive%20%C2%BB%20%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8libmad_files/prettify.css" type="text/css">
+<script type="text/javascript" src="%E8%AE%B0%E5%BD%95%E7%82%B9%E6%BB%B4%20%C2%BB%20Blog%20Archive%20%C2%BB%20%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8libmad_files/prettify.js"> </script>
+<!-- adds end -->
+
+<link rel="alternate" type="application/rss+xml" title="记录点滴 » 怎么使用libmad Comments Feed" href="http://liupingjing.oldblog.ubuntu.org.cn/?feed=rss2&amp;p=852">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://liupingjing.oldblog.ubuntu.org.cn/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://liupingjing.oldblog.ubuntu.org.cn/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="记录点滴" href="http://liupingjing.oldblog.ubuntu.org.cn/">
+<link rel="start" title="evince查看pdf的中文乱码问题" href="http://liupingjing.oldblog.ubuntu.org.cn/?p=96">
+<link rel="prev" title="libmad音频解码库简介及其数据结构" href="http://liupingjing.oldblog.ubuntu.org.cn/?p=850">
+<link rel="next" title="基于FPGA的MP3播放器设计" href="http://liupingjing.oldblog.ubuntu.org.cn/?p=857">
+<meta name="generator" content="WordPress 2.9.2">
+<link rel="canonical" href="http://liupingjing.oldblog.ubuntu.org.cn/?p=852">
+<link rel="stylesheet" type="text/css" media="screen" href="%E8%AE%B0%E5%BD%95%E7%82%B9%E6%BB%B4%20%C2%BB%20Blog%20Archive%20%C2%BB%20%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8libmad_files/645.css">
+
+<!-- Protected by WP-SpamFree v2.1.0.7 :: JS BEGIN -->
+<script type="text/javascript" src="%E8%AE%B0%E5%BD%95%E7%82%B9%E6%BB%B4%20%C2%BB%20Blog%20Archive%20%C2%BB%20%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8libmad_files/wpsf-js.js"></script> 
+<!-- Protected by WP-SpamFree v2.1.0.7 :: JS END -->
+
+
+<link rel="stylesheet" href="%E8%AE%B0%E5%BD%95%E7%82%B9%E6%BB%B4%20%C2%BB%20Blog%20Archive%20%C2%BB%20%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8libmad_files/wp-syntax.css" type="text/css" media="screen">
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head><body>
+	<div id="bigwrapper">
+	<div id="wrapper">
+
+		<div id="header">
+			<h1 id="blogtitle"><a href="http://liupingjing.oldblog.ubuntu.org.cn/">记录点滴</a></h1>
+			<div id="tagline"></div>
+		</div>    <!--ending header -->
+		
+		<div id="top_menu">
+			<ul>
+			<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/">Blog</a></li>
+			<li class="page_item page-item-190"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?page_id=190" title="留言板">留言板</a></li>
+			</ul>
+
+			<div id="search_bar">
+			<form method="get" id="searchform" action="http://liupingjing.oldblog.ubuntu.org.cn/">
+				<input name="s" id="s" type="text">
+				<input src="%E8%AE%B0%E5%BD%95%E7%82%B9%E6%BB%B4%20%C2%BB%20Blog%20Archive%20%C2%BB%20%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8libmad_files/searchicon.gif" id="searchsubmit" value="Search" type="image">
+			
+			</form>
+			
+			</div>  <!-- closing search_bar -->
+		</div>		 <!-- closing top_menu  -->
+
+<div id="main_wrapper">
+<div id="page_body">
+
+<div id="sidebar_frame">
+	<div id="sidebar">
+	
+		<li id="calendar-3" class="widget widget_calendar"><h2 class="widgettitle">&nbsp;</h2>
+<div id="calendar_wrap"><table id="wp-calendar" summary="Calendar">
+	<caption>October 2010</caption>
+	<thead>
+	<tr>
+		<th abbr="Monday" scope="col" title="Monday">M</th>
+		<th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+		<th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+		<th abbr="Thursday" scope="col" title="Thursday">T</th>
+		<th abbr="Friday" scope="col" title="Friday">F</th>
+		<th abbr="Saturday" scope="col" title="Saturday">S</th>
+		<th abbr="Sunday" scope="col" title="Sunday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td abbr="April" colspan="3" id="prev"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=201004" title="View posts for April 2010">« Apr</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="4" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td>
+	</tr>
+	<tr>
+		<td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td id="today">10</td>
+	</tr>
+	<tr>
+		<td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+	</tr>
+	<tr>
+		<td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+	</tr>
+	<tr>
+		<td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+	</tr>
+	</tbody>
+	</table></div></li>
+<li id="categories-294932482" class="widget widget_categories"><h2 class="widgettitle">分类</h2>
+		<ul>
+	<li class="cat-item cat-item-3192"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=3192" title="包括C／C＋＋语法技巧、设计技巧">C/C＋＋</a> (7)
+</li>
+	<li class="cat-item cat-item-3191"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=3191" title="EDA工具使用、EDA技巧等等">EDA</a> (9)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=16" title="所有Linux相关内容，包括内核、驱动、发行版、嵌入式Linux等">Linux</a> (47)
+<ul class="children">
+	<li class="cat-item cat-item-5"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=5" title="Ubuntu Linux相关信息，如软件安装、系统设置、软件使用等等">Ubuntu</a> (17)
+</li>
+	<li class="cat-item cat-item-3190"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=3190" title="嵌入式Linux相关，所有原创内容都是基于nios2软核处理器，FPGA芯片为Altera的EP2C35系列，开发板为DE2">uCLinux-nios2</a> (6)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1683"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=1683" title="mp3格式分析、解码库的使用以及基于FPGA的mp3播放器设计">MP3</a> (4)
+</li>
+	<li class="cat-item cat-item-22"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=22" title="View all posts filed under Python">Python</a> (8)
+</li>
+	<li class="cat-item cat-item-278"><a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=278" title="随手所记，无关技术">随笔</a> (21)
+</li>
+		</ul>
+</li>
+		<li id="recent-comments-3" class="widget widget_recent_comments">			<h2 class="widgettitle">Recent Comments</h2>
+			<ul id="recentcomments"><li class="recentcomments">liupingjing on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=816#comment-8503">从贾君鹏事件看国人的浮躁和信仰缺失</a></li><li class="recentcomments">shinjin on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=144#comment-8486">安装cajviewer</a></li><li class="recentcomments"><a href="http://liupingjing.blog.ubuntu.org.cn/?p=804" rel="external nofollow" class="url">记录点滴 » Blog Archive » 小谈Python</a> on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=689#comment-8485">用python设计汉字编码查询程序</a></li><li class="recentcomments">laguna on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=709#comment-8483">测试程序运行时间</a></li><li class="recentcomments">Anonymous on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=315#comment-8468">Quartus_II软件显示窗口标签(tab)的问题</a></li><li class="recentcomments">Anonymous on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=315#comment-8402">Quartus_II软件显示窗口标签(tab)的问题</a></li><li class="recentcomments">liupingjing on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=709#comment-8381">测试程序运行时间</a></li><li class="recentcomments">Anonymous on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=709#comment-8378">测试程序运行时间</a></li><li class="recentcomments">Anonymous on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=315#comment-8376">Quartus_II软件显示窗口标签(tab)的问题</a></li><li class="recentcomments">liupingjing on <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=697#comment-8358">linux下用vim进行16进制编辑的问题</a></li></ul>
+		</li>
+<li id="meta-3" class="widget widget_meta"><h2 class="widgettitle">Meta</h2>
+			<ul>
+			<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/wp-login.php?action=register">Register</a></li>			<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/wp-login.php">Log in</a></li>
+			<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li>
+<li id="linkcat-16" class="widget widget_links"><h2 class="widgettitle">Linux</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://blog.ubuntu.org.cn/" target="_blank">Ubuntu Blog</a></li>
+<li><a href="http://wiki.ubuntu.org.cn/index.php?title=%E9%A6%96%E9%A1%B5&amp;variant=zh-cn">Ubuntu中文Wiki</a></li>
+<li><a href="http://forum.ubuntu.org.cn/">Ubuntu中文社区</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-3193" class="widget widget_links"><h2 class="widgettitle">社区精品博客</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://abing.blog.ubuntu.org.cn/">aBiNg的博客</a></li>
+<li><a href="http://li2z.cn/">bones7456的博客</a></li>
+<li><a href="http://eexpress.blog.ubuntu.org.cn/">ee的博客</a></li>
+<li><a href="http://oneleaf.blog.ubuntu.org.cn/">一叶的博客</a></li>
+<li><a href="http://blog.sina.com.cn/l1f2ng">李锋博客</a></li>
+
+	</ul>
+</li>
+
+<li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+		<ul>
+			<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=201004" title="April 2010">April 2010</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200912" title="December 2009">December 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200911" title="November 2009">November 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200910" title="October 2009">October 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200909" title="September 2009">September 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200908" title="August 2009">August 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200907" title="July 2009">July 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200906" title="June 2009">June 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200905" title="May 2009">May 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200904" title="April 2009">April 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200903" title="March 2009">March 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200902" title="February 2009">February 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200901" title="January 2009">January 2009</a></li>
+	<li><a href="http://liupingjing.oldblog.ubuntu.org.cn/?m=200812" title="December 2008">December 2008</a></li>
+		</ul>
+</li>
+
+	</div>
+</div>
+
+
+
+<div id="main_frame">
+	
+	<div id="main">
+
+	
+		<div class="blogpost" id="post-852">
+				<div class="postdate">
+					<span class="postday">3</span>
+					<span class="postmo">Dec</span>
+				</div>	
+				
+				<div class="postheader">
+
+					 
+
+					<h2><a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=852" rel="bookmark" title="Permanent Link to 怎么使用libmad">怎么使用libmad</a></h2>
+					
+					  
+
+					<span class="postmeta">
+						Category: <a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=3192" title="View all posts in C/C＋＋" rel="category">C/C＋＋</a>,  <a href="http://liupingjing.oldblog.ubuntu.org.cn/?cat=1683" title="View all posts in MP3" rel="category">MP3</a>					</span>
+				</div>
+
+			<div class="postbody">
+				<p>libmad是一个开源mp3解码库，其对mp3解码算法做了很多优化，性能较好，很多播放器如mplayer、xmms等都是使用这个开源库进行解码的；如果要设计mp3播放器而又不想研究mp3解码算法的话，libmad是个不错的选择，可是问题来了：<br>
+<span id="more-852"></span></p>
+<ul>
+<li>libmad配套的相关文档太少，可以说几乎没有，只有一个示例程序minimad.c，但没有一定经验的人根本不知道怎么编译这个minimad.c，就算是编译了也不知道怎么运行、怎么播放mp3；</li>
+<li>网上讲libmad和minimad.c的文章很多，但能解释清楚的少之又少，大家都是抄来抄去，要么是不懂装懂，要么是懂了一点就自以为精通了，这样一来的结果是：在网上搜两天也弄不明白libmad究竟怎么使用。</li>
+</ul>
+<p>所幸手里有Altera公司的一个工程，借助对该工程的分析、minimad.c中少的可怜的注释和网上搜索的Linux音频方面的相关知识，反复思考编码，总算把libmad库用起来了，现记录一下其使用方法，在帮助别人的同时也方便自己回头查询。</p>
+<p>在开始之前，最好先把mp3文件格式和Linux音频编程方面的知识先学习一下，不然后面有的东西可能听不懂，还有就是一定要熟悉Linux系统，后面的代码都是在linux系统中用gcc编译的，在Windows下不能用的。</p>
+<p>首先看下面几个问题，这也是我一开始最迷惑的，弄明白这几个问题了，也就对libmad库的使用相当熟悉了：</p>
+<ol>
+<li>minimad.c怎么编译？编译后怎么运行？运行时的输入输出分别是什么，或者说运行时什么效果？</li>
+<li>怎样播放minimad输出的数据？或者说怎么播放解码后的数据？</li>
+<li>minimad运行时，mp3数据来源是标准输入，能不能改为从文件中读入数据？该怎么改？</li>
+<li>minimad运行时首先要将整个mp3文件读入内存，能不能改成边解码边读入的形式，比如每次读入16K，解码完再读入16K，而又不影响播放的连贯性，这样可以节省内存开销，方便在嵌入式系统中使用；</li>
+<li>怎样用libmad做一个简单的mp3播放器?</li>
+</ol>
+<p>一个一个来讲吧。</p>
+<ol>
+<font color="Purple">
+<li>minimad.c怎么编译？编译后怎么运行？运行时的输入输出分别是什么，或者说运行时什么效果？</li></font>
+<p>在Linux下(我前面说了，本文所有的工作都是在Linux进行)先安装libmad，说白了就是把libmad库导入C标准库，安装方法见libmad-0.15.1b中的README和INSTALL文件。</p>
+<p>安装libmad后，新建一个文件夹，将libmad-0.15.1b中的minimad.c和mad.h复制过来，用gcc编译minimad.c，编译命令为(假设要生成的可执行程序为minimad)：<br>
+<code>gcc -o minimad minimad.c -lmad</code></p>
+<p>minimad程序从标准输入读入mp3文件，然后将解码后的音频数据送到标准输出，我们可以用重定向的方式从文件中读入数据并将结果写至文件，命令如下：<br>
+<code>./minimad tmp.pcm</code>
+</p><p><font color="Purple">
+<li>怎样播放minimad输出的数据？或者说怎么播放解码后的数据？</li></font></p>
+<p>假设你有Linux音频编程方面的基础的话，这个应该不成问题，如果没有也没关系，在Linux的设计理念中，一切皆是文件，音频设备也是文件，只
+需要打开/dev/dsp（音频设备)这个文件，然后将解码后的数据写入这个文件即可实现播放，新建pcmplay.c文件，拷入如下代码：</p>
+<pre><code>#include
+#include
+#include
+#include
+#include
+#include 
+
+int main(int argc, char *argv[])
+{
+    int  id, fd, i;
+    char buf[1024];
+    int  rate;      /*simple rate 44.1KHz*/
+    int  format;    /*quatize args*/
+    int  channels;  /*sound channel*/
+
+    if(argc != 2)
+    {
+        fprintf(stderr, "usage : %s \n", argv[0]);
+        exit(-1);
+    }
+
+    if((fd = open(argv[1], O_RDONLY)) &lt; 0)
+    {
+        fprintf(stderr, "Can't open sound file!\n");
+        exit(-2);
+    }
+
+    if((id = open("/dev/dsp", O_WRONLY)) 0)
+    {
+        write(id, buf, i);
+        //printf("i=%d\n", i);
+    }
+
+    close(fd);
+    close(id);
+
+    exit(0);
+
+}</code></pre>
+<p>编译pcmplay文件，然后就可以用生成的可执行程序播放第一步中声称的tmp.pcm文件，命令如下：</p>
+<pre><code>gcc -o pcmplay pcmplay.c
+./minimad tmp.pcm
+./pcmplay  tmp.pcm</code></pre>
+<p>播放时可能会变调，这是因为上面这段代码中将音频设备采样率固定设置为44.1k，而mp3文件不一定是这个采样率，解决方法后面会讲。
+</p><p><font color="Purple">
+<li>minimad运行时，mp3数据来源是标准输入，能不能改为从文件中读入数据？该怎么改？</li></font></p>
+<p>当然可以改，而且改起来相当的简单，如果不知道怎么改只能说明自己没仔细看minimad.c，你可能不知道struct 
+stat是什么，也不清楚mmap()函数有什么用，但这些都可以在网上查到的，查了之后稍加分析就会发现原来就是把一片数据放入一块内存并得到它的长度
+而已，那改成文件读入的方式也很容易，用fopen打开文件，计算一下文件的长度，然后用fread把数据全部读出来即可，这里就不贴代码了。
+</p><p><font color="Purple">
+<li>minimad运行时首先要将整个mp3文件读入内存，能不能改成边解码边读入的形式，比如每次读入16K，解码完再读入16K，而又不影响播放的连贯性，这样可以节省内存开销，方便在嵌入式系统中使用；</li></font></p>
+<p>修改input()函数，在调用libmad中的mad_decoder_run()实现播放时，首先检查待解码缓存区中有没有数据，有则解码，没
+有则调用input()函数一次以填充数据(填充多少可以自己指定)，然后开始解码，解码后的数据交给output()函数处理，解码过程中，一旦待解码
+缓存区中的解码数据不够则再次调用input()函数……</p>
+<p>在这里还要提一下struct 
+buffer这个结构体，这个结构体是在input、output和decoder之间传送数据的载体，可以自行定义，比如我的数据来源是文件，待解码数
+据缓存区大小为4K，要传递的私有数据包括文件指针、当前的位置、数据缓冲区、缓冲区的实际大小、文件的总大小等，则我这里定义如下：</p>
+<pre><code>struct buffer {
+  FILE  *fp;                    /*file pointer*/
+  unsigned int  flen;           /*file length*/
+  unsigned int  fpos;           /*current position*/
+  unsigned char fbuf[BUFSIZE];  /*buffer*/
+  unsigned int  fbsize;         /*indeed size of buffer*/
+};
+typedef struct buffer mp3_file;</code></pre>
+<p>修改input()函数为如下形式，则每次调用填充BUFSIZE字节的数据：</p>
+<pre><code>static
+enum mad_flow input(void *data,
+		    struct mad_stream *stream)
+{
+  mp3_file *mp3fp;
+  int      ret_code;
+  int      unproc_data_size;    /*the unprocessed data's size*/
+  int      copy_size;
+
+  mp3fp = (mp3_file *)data;
+  if(mp3fp-&gt;fpos flen)
+  {
+      unproc_data_size = stream-&gt;bufend - stream-&gt;next_frame;
+      memcpy(mp3fp-&gt;fbuf, mp3fp-&gt;fbuf+mp3fp-&gt;fbsize-unproc_data_size, unproc_data_size);
+      copy_size = BUFSIZE - unproc_data_size;
+      if(mp3fp-&gt;fpos + copy_size &gt; mp3fp-&gt;flen)
+      {
+          copy_size = mp3fp-&gt;flen - mp3fp-&gt;fpos;
+      }
+      fread(mp3fp-&gt;fbuf+unproc_data_size, 1, copy_size, mp3fp-&gt;fp);
+      mp3fp-&gt;fbsize = unproc_data_size + copy_size;
+      mp3fp-&gt;fpos  += copy_size;
+
+      /*Hand off the buffer to the mp3 input stream*/
+      mad_stream_buffer(stream, mp3fp-&gt;fbuf, mp3fp-&gt;fbsize);
+      ret_code = MAD_FLOW_CONTINUE;
+  }
+  else
+  {
+      ret_code = MAD_FLOW_STOP;
+  }
+
+  return ret_code;
+
+}</code></pre>
+<p>注意：在上面的代码中涉及到了断桢问题，即一桢跨了两个BUFSIZE，这时候应该将缓冲区中的剩余数据先移至缓冲区头部，然后再从文件中读出数据填充缓冲区。
+</p><p><font color="Purple">
+<li>怎样用libmad设计一个简单的mp3播放器?</li></font></p>
+<p>修改output()函数。<br>
+我在上面说过了，解码后的数据通过output()函数进行处理，在minimad.c中output()函数直接将解码后的数据送到标准输出，其实只要将这里修改为送到音频设备就可以实现播放了。</p>
+<p>还有一点需要说明的是：mp3文件的采样率不是固定不变的，解码后的数据中包括采样率，在播放过程中，一旦采样率发生变化，要重新设置一下音频设备。</p>
+<p>新建一个mp3player.c文件，然后将下面的代码复制进去，编译生成mp3player，这就是一个简单的mp3播放器了，可以用./mp3player 1.mp3命令来播放1.mp3文件。</p>
+<pre><code>#include
+#include
+#include
+#include
+#include
+#include
+#include
+#include
+#include
+#include "mad.h"
+
+#define BUFSIZE 8192
+
+/*
+ * This is a private message structure. A generic pointer to this structure
+ * is passed to each of the callback functions. Put here any data you need
+ * to access from within the callbacks.
+ */
+struct buffer {
+  FILE  *fp;                    /*file pointer*/
+  unsigned int  flen;           /*file length*/
+  unsigned int  fpos;           /*current position*/
+  unsigned char fbuf[BUFSIZE];  /*buffer*/
+  unsigned int  fbsize;         /*indeed size of buffer*/
+};
+typedef struct buffer mp3_file;
+
+int soundfd;                 /*soundcard file*/
+unsigned int prerate = 0;    /*the pre simple rate*/
+
+int writedsp(int c)
+{
+    return write(soundfd, (char *)&amp;c, 1);
+}
+
+void set_dsp()
+{
+    int format = AFMT_S16_LE;
+    int channels = 2;
+
+    soundfd = open("/dev/dsp", O_WRONLY);
+    ioctl(soundfd, SNDCTL_DSP_SETFMT, &amp;format);
+    ioctl(soundfd, SNDCTL_DSP_CHANNELS, &amp;channels);
+}
+
+/*
+ * This is perhaps the simplest example use of the MAD high-level API.
+ * Standard input is mapped into memory via mmap(), then the high-level API
+ * is invoked with three callbacks: input, output, and error. The output
+ * callback converts MAD's high-resolution PCM samples to 16 bits, then
+ * writes them to standard output in little-endian, stereo-interleaved
+ * format.
+ */
+
+static int decode(mp3_file *mp3fp);
+
+int main(int argc, char *argv[])
+{
+  long flen, fsta, fend;
+  int  dlen;
+  mp3_file *mp3fp;
+
+  if (argc != 2)
+    return 1;
+
+  mp3fp = (mp3_file *)malloc(sizeof(mp3_file));
+  if((mp3fp-&gt;fp = fopen(argv[1], "r")) == NULL)
+  {
+      printf("can't open source file.\n");
+      return 2;
+  }
+  fsta = ftell(mp3fp-&gt;fp);
+  fseek(mp3fp-&gt;fp, 0, SEEK_END);
+  fend = ftell(mp3fp-&gt;fp);
+  flen = fend - fsta;
+  if(flen fp, 0, SEEK_SET);
+  fread(mp3fp-&gt;fbuf, 1, BUFSIZE, mp3fp-&gt;fp);
+  mp3fp-&gt;fbsize = BUFSIZE;
+  mp3fp-&gt;fpos   = BUFSIZE;
+  mp3fp-&gt;flen   = flen;
+
+  set_dsp();
+
+  decode(mp3fp);
+
+  close(soundfd);
+  fclose(mp3fp-&gt;fp);
+
+  return 0;
+}
+
+/*
+ * This is the input callback. The purpose of this callback is to (re)fill
+ * the stream buffer which is to be decoded. In this example, an entire file
+ * has been mapped into memory, so we just call mad_stream_buffer() with the
+ * address and length of the mapping. When this callback is called a second
+ * time, we are finished decoding.
+ */
+
+static
+enum mad_flow input(void *data,
+		    struct mad_stream *stream)
+{
+  mp3_file *mp3fp;
+  int      ret_code;
+  int      unproc_data_size;    /*the unprocessed data's size*/
+  int      copy_size;
+
+  mp3fp = (mp3_file *)data;
+  if(mp3fp-&gt;fpos flen)
+  {
+      unproc_data_size = stream-&gt;bufend - stream-&gt;next_frame;
+      memcpy(mp3fp-&gt;fbuf, mp3fp-&gt;fbuf+mp3fp-&gt;fbsize-unproc_data_size, unproc_data_size);
+      copy_size = BUFSIZE - unproc_data_size;
+      if(mp3fp-&gt;fpos + copy_size &gt; mp3fp-&gt;flen)
+      {
+          copy_size = mp3fp-&gt;flen - mp3fp-&gt;fpos;
+      }
+      fread(mp3fp-&gt;fbuf+unproc_data_size, 1, copy_size, mp3fp-&gt;fp);
+      mp3fp-&gt;fbsize = unproc_data_size + copy_size;
+      mp3fp-&gt;fpos  += copy_size;
+
+      /*Hand off the buffer to the mp3 input stream*/
+      mad_stream_buffer(stream, mp3fp-&gt;fbuf, mp3fp-&gt;fbsize);
+      ret_code = MAD_FLOW_CONTINUE;
+  }
+  else
+  {
+      ret_code = MAD_FLOW_STOP;
+  }
+
+  return ret_code;
+
+}
+
+/*
+ * The following utility routine performs simple rounding, clipping, and
+ * scaling of MAD's high-resolution samples down to 16 bits. It does not
+ * perform any dithering or noise shaping, which would be recommended to
+ * obtain any exceptional audio quality. It is therefore not recommended to
+ * use this routine if high-quality output is desired.
+ */
+
+static inline
+signed int scale(mad_fixed_t sample)
+{
+  /* round */
+  sample += (1L &lt;= MAD_F_ONE)
+    sample = MAD_F_ONE - 1;
+  else if (sample &gt; (MAD_F_FRACBITS + 1 - 16);
+}
+
+/*
+ * This is the output callback function. It is called after each frame of
+ * MPEG audio data has been completely decoded. The purpose of this callback
+ * is to output (or play) the decoded PCM audio.
+ */
+
+static
+enum mad_flow output(void *data,
+		     struct mad_header const *header,
+		     struct mad_pcm *pcm)
+{
+  unsigned int nchannels, nsamples;
+  unsigned int rate;
+  mad_fixed_t const *left_ch, *right_ch;
+
+  /* pcm-&gt;samplerate contains the sampling frequency */
+
+  rate= pcm-&gt;samplerate;
+  nchannels = pcm-&gt;channels;
+  nsamples  = pcm-&gt;length;
+  left_ch   = pcm-&gt;samples[0];
+  right_ch  = pcm-&gt;samples[1];
+
+  /* update the sample rate of dsp*/
+  if(rate != prerate)
+  {
+      ioctl(soundfd, SNDCTL_DSP_SPEED, &amp;rate);
+      prerate = rate;
+  }
+
+  while (nsamples--) {
+    signed int sample;
+
+    /* output sample(s) in 16-bit signed little-endian PCM */
+
+    sample = scale(*left_ch++);
+    writedsp((sample &gt;&gt; 0) &amp; 0xff);
+    writedsp((sample &gt;&gt; 8) &amp; 0xff);
+
+    if (nchannels == 2) {
+      sample = scale(*right_ch++);
+      writedsp((sample &gt;&gt; 0) &amp; 0xff);
+      writedsp((sample &gt;&gt; 8) &amp; 0xff);
+    }
+  }
+
+  return MAD_FLOW_CONTINUE;
+}
+
+/*
+ * This is the error callback function. It is called whenever a decoding
+ * error occurs. The error is indicated by stream-&gt;error; the list of
+ * possible MAD_ERROR_* errors can be found in the mad.h (or stream.h)
+ * header file.
+ */
+
+static enum mad_flow error(void *data,
+		    struct mad_stream *stream,
+		    struct mad_frame *frame)
+{
+  mp3_file *mp3fp = data;
+
+  fprintf(stderr, "decoding error 0x%04x (%s) at byte offset %u\n",
+	  stream-&gt;error, mad_stream_errorstr(stream),
+	  stream-&gt;this_frame - mp3fp-&gt;fbuf);
+
+  /* return MAD_FLOW_BREAK here to stop decoding (and propagate an error) */
+
+  return MAD_FLOW_CONTINUE;
+}
+
+/*
+ * This is the function called by main() above to perform all the decoding.
+ * It instantiates a decoder object and configures it with the input,
+ * output, and error callback functions above. A single call to
+ * mad_decoder_run() continues until a callback function returns
+ * MAD_FLOW_STOP (to stop decoding) or MAD_FLOW_BREAK (to stop decoding and
+ * signal an error).
+ */
+
+static int decode(mp3_file *mp3fp)
+{
+  struct mad_decoder decoder;
+  int result;
+
+  /* configure input, output, and error functions */
+  mad_decoder_init(&amp;decoder, mp3fp,
+		   input, 0 /* header */, 0 /* filter */, output,
+		   error, 0 /* message */);
+
+  /* start decoding */
+  result = mad_decoder_run(&amp;decoder, MAD_DECODER_MODE_SYNC);
+
+  /* release the decoder */
+  mad_decoder_finish(&amp;decoder);
+
+  return result;
+}</code></pre>
+
+</ol>
+			</div>
+
+			<p class="subpostmeta sg_postmeta">
+			Posted Thursday, December 3rd, 2009 at 4:59 pm<br>
+						
+									
+
+													You can <a href="#respond">leave a response</a>, or <a href="http://liupingjing.oldblog.ubuntu.org.cn/wp-trackback.php?p=852" rel="trackback">trackback</a> from your own site.
+
+									</p>
+		</div>  <!-- closing blogpost -->
+
+		<span class="navigation single_nav">
+						
+			<span class="alignleft">&nbsp;&lt;&lt;<a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=857" rel="next">基于FPGA的MP3播放器设计</a> </span>
+			<span class="alignright"> <a href="http://liupingjing.oldblog.ubuntu.org.cn/?p=850" rel="prev">libmad音频解码库简介及其数据结构</a>&nbsp;&gt;&gt;</span>
+		</span>
+
+	
+<!-- You can start editing here. -->
+<div id="comment_wrapper">
+<div id="postcommentscount"><span id="commentcountnum">0</span></div>
+<div id="postcomments"><a name="comments"></a>
+
+			<!-- If comments are open, but there are no comments. -->
+
+	 
+
+
+<h3 id="respond" class="commentstitle">Leave a Reply</h3>
+
+
+<form action="http://liupingjing.oldblog.ubuntu.org.cn/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input class="commentinput" name="author" id="author" size="22" tabindex="1" type="text">
+<label for="author" class="commentlabel">Name (required)</label></p>
+
+<p><input class="commentinput" name="email" id="email" size="22" tabindex="2" type="text">
+<label for="email" class="commentlabel">Email (not shown, but required)</label></p>
+
+<p><input class="commentinput" name="url" id="url" size="22" tabindex="3" type="text">
+<label for="url" class="commentlabel">Website</label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; line=&quot;&quot; escaped=&quot;&quot;&gt; </small></p>-->
+
+<p><textarea name="comment" id="comment" cols="50" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" src="%E8%AE%B0%E5%BD%95%E7%82%B9%E6%BB%B4%20%C2%BB%20Blog%20Archive%20%C2%BB%20%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8libmad_files/submit_comment.jpg" id="submit" tabindex="5" value="Submit Comment" type="image">
+<input name="comment_post_ID" value="852" type="hidden">
+</p>
+	<script type="text/javascript">
+	<!--
+	refJS = escape( document[ 'referrer' ] );
+	document.write("<input type='hidden' name='refJS' value='"+refJS+"'>");
+	// -->
+	</script><input name="refJS" value="" type="hidden">
+	<p style="font-size: 9px; clear: both;">Spam Protection by <a href="http://www.hybrid6.com/webgeek/plugins/wp-spamfree" title="WP-SpamFree WordPress Anti-Spam Plugin">WP-SpamFree</a></p>
+<noscript><p><strong>Currently you have JavaScript disabled. In order to post comments, please make sure JavaScript and Cookies are enabled, and reload the page.</strong> <a href="http://www.google.com/support/bin/answer.py?answer=23852" rel="nofollow external" >Click here for instructions</a> on how to enable JavaScript in your browser.</p></noscript>
+
+</form>
+
+
+</div>
+</div> <!-- closing comment_wrapper -->
+
+	
+	</div>  <!-- closing main -->
+</div>		 <!-- closing main_frame -->  
+
+</div> <!--closing page_body -->
+<script type="text/javascript">
+	window.onload = function(){prettyPrint();};
+</script>
+
+<div id="footer">
+	<div id="footer_content">
+
+		<div class="footer_mod">
+			<div id="footer_meta">
+				<h3>Props</h3>
+				记录点滴 is proudly powered by
+				<a href="http://wordpress.org/">WordPress</a>.<br>
+				<!-- Please do not remove attribution link, licensed under Creative Commons -->
+				Recent Comments plugin by <a href="http://www.g-loaded.eu/2006/01/15/simple-recent-comments-wordpress-plugin/">George Notaras</a>.<br> 
+				<span id="footer_subs">
+					You can subscribe the blog <a href="http://liupingjing.oldblog.ubuntu.org.cn/?feed=rss2">Entries</a> or <a href="http://liupingjing.oldblog.ubuntu.org.cn/?feed=comments-rss2">Comments</a>.<br>
+				</span>
+				Theme design by <a href="http://robgoodlatte.com/">Rob Goodlatte</a> under Creative Commons. Redisign by <a href="http://xxdaystar.blog.ubuntu.org.cn/">xxdaystar</a>.
+
+			</div> <!-- ending footer_meta -->
+			
+		</div>  <!-- ending footer_mod -->
+	</div> <!-- ending footer content -->
+
+</div>		<!-- ending footer -->
+</div>		 <!-- closing main_wrapper -->
+</div>		<!-- ending wrapper -->
+</div> 	<!-- end of bigwrapper -->
+
+
+		
+<!-- Dynamic Page Served (once) in 1.289 seconds -->
+<!-- Cached page generated by WP-Super-Cache on 2010-10-10 16:40:11 -->
+<!-- Compression = gzip --></body></html>

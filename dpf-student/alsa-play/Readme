@@ -1,0 +1,31 @@
+1、
+Panda.Guo $make clean
+rm -f  minimad.o  play.o main
+
+2、
+Panda.Guo $make
+gcc -Wall -g -c -o minimad.o minimad.c
+gcc -Wall -g -c -o play.o play.c
+play.c:11:28: fatal error: alsa/asoundlib.h: 没有那个文件或目录
+compilation terminated.
+make: *** [play.o] 错误 1
+Panda.Guo $
+
+3. 
+Panda.Guo $sudo apt-get install libasound2-dev 
+
+
+4. 
+Panda.Guo $make
+gcc -Wall -g -c -o minimad.o minimad.c
+gcc -Wall -g -c -o play.o play.c
+gcc  -o main minimad.o play.o -Wall -g -lasound libmad.a
+Panda.Guo $
+
+5. 
+
+Panda.Guo $./main 1.mp3 
+decoding error 0x0101 (lost synchronization) at byte offset 0
+^C
+Panda.Guo $
+

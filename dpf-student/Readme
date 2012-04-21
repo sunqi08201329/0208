@@ -1,0 +1,8 @@
+2011年12月07日 星期三 11时10分39秒 
+
+	alsa_play 在ubuntu10.10版本上，alsa（advanced linix sound archticture） 不再支持oss
+	故需要使用 asound lib支持
+	
+	oss_src 用于 10.04版本及以前的版本播放mp3文件。
+	
+	./a.out 1.mp3 即可播放

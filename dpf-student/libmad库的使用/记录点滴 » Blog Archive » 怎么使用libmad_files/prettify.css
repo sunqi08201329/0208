@@ -1,0 +1,38 @@
+/* Pretty printing styles. Used with prettify.js. */
+
+.str { color: #800; }
+.kwd { color: #00F; }
+.com { color: #080; } /*注释*/
+.typ { color: #000; } /*方法名*/
+.lit { color: #000; } /*数字*/
+.pun { color: #000; } /*符号*/
+.pln { color: #000; } /*变量名*/
+.tag { color: #008; }
+.atn { color: #606; }
+.atv { color: #080; }
+.dec { color: #606; }
+
+pre{
+	padding-right:10px;
+
+}
+
+pre.mycode {
+   	margin:18px;
+	padding:1px 10px 1px 40px;
+	background: transparent url( ../images/code.gif ) top left no-repeat;
+    	overflow:auto;
+}
+
+@media print {
+  .str { color: #800; }
+  .kwd { color: #00F; font-weight: bold; }
+  .com { color: #080; font-style: italic; }
+  .typ { color: #000; font-weight: bold; }
+  .lit { color: #000; }
+  .pun { color: #000; }
+  .pln { color: #000; }
+  .tag { color: #006; font-weight: bold; }
+  .atn { color: #404; }
+  .atv { color: #060; }
+}

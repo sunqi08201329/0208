@@ -1,0 +1,668 @@
+/*
+Theme Name: AutoWide-Abstractia
+Theme URI: http://robgoodlatte.com
+Description: Theme with a focus on typography and colors.
+Version: 1.0
+Author: Rob Goodlatte | xxdaystar
+Author URI: http://robgoodlatte.com http://xxdaystar.blog.ubuntu.org.cn/
+
+	Abstractia v1.0
+	http://robgoodlatte.com
+
+	This theme was designed and built by Rob Goodlatte,
+	whose blog you will find at http://robgoodlatte.com/
+
+	Thanks to the developers of the Kubrick theme - the codebase
+	was used in development of this template.
+
+	The CSS, XHTML and design is released under Creative Commons
+	Attribution 2.5 License.  Please keep the attribution link in
+	the theme.
+	See http://creativecommons.org/licenses/by/2.5/
+
+
+*/
+
+/**************  layout   **************/
+
+/*---------   commen    --------*/
+
+body {
+	margin: 0; padding: 0;
+	/*text-align: center;*/
+}
+
+h1,h2,h3 {
+	margin: 0; padding: 0;
+}
+
+#header, #top_menu, #footer {
+	width: 100%;
+}
+
+#header {
+	height: 62px;
+}
+
+/*---------  frame  -----------*/
+
+#bigwrapper{
+	width:100%;
+	max-width:1800px;
+       min-width:650px;
+	margin:0 auto 0 auto;
+}
+
+#wrapper {
+	width: 81%;
+	margin:0 auto 0 auto;
+	
+}
+
+#main_frame {
+
+    width: 79%;
+    float:left;
+    overflow:auto;
+    overflow-y:hidden
+
+}
+
+#main{
+   width:98%;
+   margin:  0 auto 0 auto;
+   overflow:auto;
+   overflow-y:hidden;
+}
+
+#sidebar_frame{
+
+  width: 20%;
+  float:right;
+  overflow:auto;
+  overflow-y:hidden
+}
+
+
+#sidebar{
+
+  width: 95%;
+  margin:10px auto 10px auto;
+  overflow:auto;
+  overflow-y:hidden
+}
+
+#footer{
+        clear: both;
+}
+
+/*----------- top_menu -------------*/
+
+#top_menu {
+	height: 38px;
+	border-bottom: 1px solid #a2b47a;
+	margin-top:6px;
+      	position: relative;
+	overflow: hidden;
+}
+
+#top_menu ul {
+	padding: 0;
+	margin: 0 0 0 6px;
+}
+
+#top_menu ul li {
+	position: relative;
+	top: 10px;
+	display: inline;
+	height: 38px;
+	padding: 10px 14px 10px 14px;
+	border-right: 1px solid #9fb178;
+	list-style: none;
+}
+
+#top_menu ul li ul {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+}
+
+#top_menu ul li ul li {
+	top: 0;
+	border-right: none;
+	border-left: 1px solid #9fb178;
+	padding-right: 0;
+	margin-left: 5px;
+}
+
+#search_bar {
+	position: absolute;
+	right: 10px;
+	top: 0px;
+}
+
+#searchsubmit {
+	position: relative;
+	top: 6px;
+	margin-left: 4px;
+}
+
+
+ /*------------- blog ---------------*/
+
+.postmeta {
+	margin: 6px 0 12px 0;
+}
+
+.postheader, .postbody, .subpostmeta, #postcomments{
+
+      margin: 0 0 0 90px;
+}
+
+.postheader {
+	margin-right: 20px;
+}
+
+.postdate {
+    width: 30px;
+    float:left;
+    margin-top:4px;
+    margin-left:25px;
+}
+
+ /*--------------- other ---------------*/
+
+
+#postcommentscount {
+	position: relative;
+	top: 32px;
+	left: 30px;
+	width: 40px;
+	height: 37px;
+	clear: left;
+	background: url(images/commentbubble.gif) top left no-repeat;
+}
+
+
+
+/**************    color       ***************/
+
+body {
+	background: #1f1f1f url('images/main_bg.gif') top left repeat-x;
+	background-color: #000;
+}
+
+#header {
+	background: #191f29 url('images/header.jpg') top right no-repeat;
+}
+
+#top_menu {
+	background: #798862 url(images/navbar.gif) top left repeat-x;
+}
+
+#search_bar #s{
+	background: #b3c193;
+	border: 1px solid #99aa73;
+	padding: 2px; margin: 0;
+	color: #2a2a2a;
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
+#main_wrapper{
+	background-color:#FFF;
+	border-top: 6px solid #252422 ;
+	
+}
+
+#footer {
+	background: #1f1f1f url(images/footerbg.gif) top left repeat-x;
+	border-top: 1px solid #3c3c33;
+}
+
+div.commentbox {
+	margin: 8px 0;
+	padding: 10px 0 0 0;
+	background-color:#F4F9EB;
+}
+
+div.oddcomment {
+	background-color:#FCFDF9;
+}
+
+#sidebar li h2{
+	background-color: #A1B47A;
+	background: #798862 url(images/sidebarhead.png) top left repeat-x;
+}
+
+#sidebar li {
+	background-color: #F4F9EB;
+}
+
+#main blockquote{
+	margin:18px;
+	padding:1px 10px 1px 40px;
+	background: transparent url( images/quote.gif ) top left no-repeat;
+	
+	word-break:break-all;
+	overflow:auto;
+       overflow-y:hidden
+}
+
+
+.privated_post{
+    background-image: url(images/lock.png);
+    background-repeat: no-repeat    ;
+    background-position: 99%  ;
+}
+
+
+body {
+	font: 12px Arial, Helvetica, sans-serif;
+
+}
+
+a {
+	color: #5c6c3e;
+}
+
+a:hover {
+	color: #906353;
+}
+
+
+/******************  typography   ****************/
+
+/*---------   header    ----------*/
+
+#blogtitle a {
+	font: 30px Georgia, serif;
+	text-shadow: 0 0 #000;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#blogtitle {
+    padding:13px 0 0 35px;
+}
+
+#tagline {
+	color: #8090ae;
+	font: 11px Georgia, serif;
+	margin: auto 20px 0 0 ;
+	float: right;
+}
+
+/*---------  top_menu  -----------*/
+
+#top_menu ul li a {
+	color: #ffffff;
+	text-decoration: none;
+	font: 14px "Century Gothic", Arial, Helvetica, sans-serif;
+}
+
+#top_menu ul li a:active {
+	color: #daeabb;
+	font-weight: bold;
+}
+
+#top_menu ul li a:hover {
+	color: #daeabb;
+}
+
+
+/*-----------  blog  ------------*/
+
+.blogpost {
+	padding: 20px 0 5px 0;
+    overflow:auto;
+    overflow-y:hidden;
+	
+}
+
+.postdate {
+	text-align: center;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 4px 0 2px 0;
+}
+
+.postday {
+	display: block;
+	color: #635a40;
+	font: 30px Georgia, serif;
+	margin-top: -5px;
+}
+
+.postmeta, .subpostmeta {
+	color: #777777;
+	font-size: 11px;
+	display: block;
+}
+
+.postmeta a, .subpostmeta a {
+    text-decoration: none  ;
+    color: #906353;
+}
+
+.postmeta a:hover, .subpostmeta a:hover {
+    text-decoration: underline  ;
+}
+
+.postmo {
+	color: #7c7a6b;
+	font-family: "Century Gothic", Helvetica, Arial, sans-serif;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+.postheader h2 a {
+	color: #663a2e;
+	font: Georgia, serif 30px @ËÎÌו;
+	text-decoration: none;
+	font-size: 24px;
+}
+
+.commentslink {
+	padding: 0 0 4px 20px;
+	margin-left: 1px;
+	background: url(images/commenticon.gif) top left no-repeat;
+}
+
+.sg_postmeta{
+	padding-top:15px;
+}
+/*-------------  sidebar -------------*/
+
+
+#sidebar h2 {
+	color: #663a2e;
+	font: 14px Georgia, serif;
+    padding:4px 0 4px 15px ;
+}
+
+.postbody {
+	border-top: 1px solid #cfceb8;
+	padding: 0;
+	line-height: 20px;
+    font-size: 14px;
+}
+
+
+#sidebar ul {
+	margin: 2px 0 14px 0;
+	padding: 0;
+}
+
+#sidebar li {
+	list-style: none;
+
+}
+
+#sidebar li ul li{
+    font-size: 12px;
+}
+
+#sidebar ul li {
+    margin-left: 20px;
+    padding-right: 15px;
+    list-style: inside url('images/bullet.gif');
+}
+
+#categories ul li{
+     padding-right: 0px;
+}
+
+#subsceibe  ul li{
+   }
+
+#sidebar ul li li {
+	margin-left: 10px;
+	margin-bottom: 2px;
+    list-style: inside url('images/bullet.gif');
+}
+
+#sidebar ul li a {
+	padding: 5px 0;
+	margin-right: 2px;
+	color: #4c533d;
+	text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+	text-decoration: underline;
+}
+
+table#wp-calendar{
+    width:100%;
+}
+
+#sidebar #Recent_Comments  ul li a {
+  font-size: 12px;
+  font-weight:bold;
+  color:  #6b4506;
+}
+
+
+#links ul .linkcat{
+   list-style: none;
+
+}
+
+#links ul .linkcat h2{
+  background-color: #F4F9EB;
+  background-image: none ;
+  font-size:12px;
+}
+
+#calendar {
+  margin-bottom: 13px;
+}
+
+/*----------   footer    ------------*/
+
+#footer_content {
+	padding: 15px 40px 20px 40px;
+	color:#775;
+}
+
+#footer_content a {
+	text-decoration: none;
+}
+
+#footer_content a:hover {
+	text-decoration: underline;
+	color:#5C6C3E;
+}
+
+#footer h3 {
+	color: #9b7;
+	font: 14px "Century Gothic", Helvetica, Arial, sans-serif;
+}
+
+
+/*-----------  comment    -----------*/
+
+#comment_wrapper{
+	clear:both;
+}
+
+#commentcountnum {
+	font: 20px Georgia, serif;
+	color: #69624e;
+	display: block;
+	width: 40px;
+	text-align: center;
+	padding-top: 2px;
+}
+
+h3.commentstitle {
+	color: #663a2e;
+	font: 16px Georgia, serif;
+	margin-bottom: 12px;
+}
+
+.commentlabel {
+	font: 12px "Century Gothic", Arial, Helvetica, sans-serif;
+	color: #5d5a49;
+	margin-left: 1px;
+}
+
+input.commentinput, textarea#comment {
+	background: #fffef8;
+	border: 1px solid #dadfbf;
+	padding: 2px;
+	color: #55564d;
+}
+
+
+textarea#comment {
+   width:70%;
+   min-width:330px;
+}
+
+.left_commentauthor{
+	float:left;
+}
+
+.commentauthor {
+       float:right;
+       margin: 0 105px 3px 0;
+	font: 14px Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #787878;
+	letter-spacing: -1px;
+}
+
+.oddcomment .commentauthor {
+       float:left;
+	margin: 0 0 3px 60px;
+}
+
+.commentauthor a {
+	color: #906353;
+	text-decoration: none;
+}
+
+
+.commentmetadata {
+    float:right;
+    clear:both;
+    margin-right:55px;
+}
+
+.oddcomment .commentmetadata {
+    float:left;
+    padding-right:60px;
+    margin-left:20px;
+    clear:both;
+}
+
+.commentmetadata a {
+	color: #afb898;
+    text-decoration: none  ;
+}
+
+.commentbody {
+    padding: 5px 30px 12px 20px;
+    line-height: 16px;
+    color: #413e36;
+    overflow:auto;
+    overflow-y:hidden    ;
+    clear:both;
+
+}
+
+
+h3#respond {
+	padding-top: 6px;
+
+}
+
+/*
+a.feedlink {
+	background: url(images/feed-icon-14x14.gif) top left no-repeat;
+	text-indent: 19px;
+	display: block;
+}*/
+
+/*---------   search  -----------*/
+
+#searchform  #s{                        /* search text area */
+     /* float:right;
+      width: 38%;*/
+     /* margin-top:9px;*/
+}
+
+#searchform #searchsubmit{
+	/*float:right;
+	margin-right:4px;*/
+}
+
+
+/*-------  single navigation  ---------*/
+
+.navigation {
+	font-size: 14px;
+       color: #5c6c3e;
+	font-weight: bold;
+
+}
+
+.navigation .alignleft {
+	float: left;
+	width: 40%;
+	text-align: left;
+	margin:30px auto 20px 90px;
+}
+
+.navigation .alignright {
+	float: right;
+	width: 40%;
+	text-align: right;
+	margin-top:30px;
+	margin-bottom:20px;
+}
+
+.navigation .alignleft a,.navigation .alignright a{
+	text-decoration: none;
+}
+
+.navigation .alignleft a:hover,.navigation .alignright a:hover{
+	text-decoration: underline;
+}
+
+.single_nav .alignleft {
+	margin-bottom:0px;
+}
+
+.single_nav .alignright {
+	margin-bottom:0px;
+}
+
+/*--------- remain to judge -----------*/
+
+img.wp-smiley {
+	float: none;
+	display: inline;
+	margin: 0; padding: 0;
+}
+
+/*-         -*/
+
+#serach_info{
+	margin:20px 0 0px 85px;
+	font-weight: normal;
+	color: #663a2e;
+	font: 24px Georgia, serif;
+
+}
+
+/*---------- Page ----------*/
+.pagemain{
+	margin:20px 10px 0 30px;
+}
+
+#page_body{
+	min-height:500px;
+}
