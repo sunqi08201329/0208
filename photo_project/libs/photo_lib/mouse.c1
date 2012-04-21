@@ -1,0 +1,107 @@
+/*
+ *  2010-4-5
+ *  mouse V0.1
+ */
+
+#include <stdio.h>
+#include <errno.h>
+#include <string.h>
+
+#include <fcntl.h>
+#include <unistd.h>
+#include "common.h"
+
+/* ******************* .h */
+
+typedef struct 
+{
+    int x;
+    int y;
+    int button;
+}mouse_event_t;
+
+extern int mouse_open(const char *mice_device, int *mfd);
+extern int mouse_parse(const u8_t *buf, mouse_event_t *mevent);
+
+
+/* *******************  end .h*/
+
+int test_mouse(fb_info fb_inf)
+{
+    int mfd;
+    if (mouse_open(NULL, &mfd) != 0)
+	   return -1;
+
+    while(1){
+	   u8_t buf[8]; mouse_event_t mevent;
+	   
+	   if(read(mfd, buf, 8)  > 0){
+		  mouse_parse(buf, &mevent);
+		  printf("dx:%d\tdy:%d\n",
+			    mevent.x, mevent.y);
+		  switch(mevent.button){
+		  case 1:
+			 printf("left button\n");
+			 break;
+		  case 2:
+			 printf("right button\n");
+			 break;
+		  case 3:
+			 printf("middle button\n");
+			 break;
+		  default:
+			 printf("no button\n");
+			 break;
+		  }
+	   }
+	   
+    
+    }
+    
+    close(mfd);
+    return 0;
+}
+
+int mouse_open(const char *mice_device, int *mfd)
+{
+    if (mice_device == NULL)
+	   mice_device = "/dev/input/mice";
+    if((*mfd = open(mice_device, O_RDONLY | O_NONBLOCK)) < 0){
+	   fprintf(stderr, "Error open %s:%s\n",
+			 mice_device, strerror(errno));
+	   return -1;
+    }
+    
+    return 0;
+	   
+}
+/* Linux mice driver */
+int mouse_parse(const u8_t *buf, mouse_event_t *mevent)
+{
+    
+    switch(buf[0] & 0x7){
+    case 1:				  /* left */
+	   mevent->button = 1;
+	   break;
+    case 2:				  /* right */
+	   mevent->button = 2;
+	   break;
+    case 4:				  /* middle */
+	   mevent->button = 3;
+	   break;
+    default :				  /* no button */
+	   break;
+    }
+    /* bit4: 1 , left shift, 0 , ritht
+	* bit5: 1, down shift, 0, up
+	* buf[1]: dta x == width
+	* buf[2]: dta y == high 
+	*/
+    mevent->x =  buf[1] - ((buf[0] & 0x10) ? 256 : 0);
+    mevent->y = -buf[2] + ((buf[0] & 0x20) ? 256 : 0);
+	   
+    return 0;
+}
+
+		  
+	  
