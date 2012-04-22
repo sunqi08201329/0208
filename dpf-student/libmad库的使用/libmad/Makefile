@@ -10,7 +10,7 @@ MACRO =
 all:$(target) tags
 
 $(target):%:%.c
-	$(CC) $(CFLAGS) -lmad $< -o $@
+	$(CC) $(CFLAGS) -L../libmad-0.15.0b/.libs -lmad $< -o $@
 tags:
 	ctags -R *
 clean:

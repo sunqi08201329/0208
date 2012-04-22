@@ -10,8 +10,8 @@ INC_PATH = ./include/
 LIB_PATH = ./libs/photo_lib/
 lib_name = photo_project 
 
-LD_HEAS = -I./libs/jpeg-8/ -I./libs/freetype-2.3.11/include -I$(INC_PATH)
-LD_LIBS = -L./libs/jpeg-8/.libs/ -ljpeg -L./libs/freetype-2.3.11/objs/.libs -lfreetype -L$(LIB_PATH) -l$(lib_name)
+LD_HEAS = -I./libs/jpeg-8/ -I./libs/freetype-2.3.11/include -I./libs/libmad-0.15.0b/ -I$(INC_PATH)
+LD_LIBS = -L./libs/jpeg-8/.libs/ -ljpeg -L./libs/freetype-2.3.11/objs/.libs -lfreetype -L../libmad-0.15.0b/.libs -lmad -L$(LIB_PATH) -l$(lib_name)
 #LD_LIB_JPEG = -I/home/akaedu/github/0208/photo_project/libs/jpeg-8/.libs:
 #LD_LIB_FREETYPE = $LD_LIBRARY_PATH:/home/akaedu/github/0208/photo_project/libs/freetype-2.3.11/objs/.libs
 

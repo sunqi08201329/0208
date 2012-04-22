@@ -9,7 +9,8 @@ target = mp3
 
 CC = -gcc
 CFLAGS = -Wall -g -c -I./
-LDFLAGS = -L./ -lmad -static
+#LDFLAGS = -L./ -lmad -static
+LDFLAGS = -L../../photo_project/libs/libmad-0.15.0b/.libs/ -lmad
 
 
 all: $(target)

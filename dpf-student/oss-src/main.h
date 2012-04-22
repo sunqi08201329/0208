@@ -7,6 +7,4 @@ extern int decode(unsigned char const *start, unsigned long length, int fd);
 
 
 
-
-
 #endif
