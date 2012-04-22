@@ -29,8 +29,10 @@ int main(int argc, char *argv[])
 	if((pid = fork()) < 0){
 		fprintf(stderr, "fork error %s\n", strerror(errno));
 		exit(1);
-	}else if(pid == 0){
-	int j = 6;
+	}else if(pid > 0){
+		//pid = waitpid(-1, &status, WNOHANG);
+
+	int j = 1;
 		while(j){
 
 			display_jpeg("./src/photo/test.jpg", fb_inf);
@@ -62,12 +64,12 @@ int main(int argc, char *argv[])
 			j--;
 #endif
 		}
+				display_string("3s 后结束thanks", 100, fb_inf.h/2, fb_inf, 0xFFFF00);
+		sleep(3);
+		system("killall -9 ./mp3");
 	}
 	else{
-		int status;
-		if((pid = waitpid(-1, &status, WNOHANG)) > 0)
-			exit(1);
-		system("./mp3 1.mp3");
+			system("./mp3 1.mp3");
 	}
 
 	munmap(fb_inf.fbmem, fb_inf.w * fb_inf.h * fb_inf.bpp / 8);
