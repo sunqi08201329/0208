@@ -43,10 +43,9 @@ void free_list(file_list * list)
 
 	while(move != NULL)
 	{
-		list = list->next;
-		free(move);
-		move = list;
 		move = move->next;
+		free(list);
+		list = move;
 	}
 
 	list = NULL;
@@ -85,8 +84,11 @@ file_list *read_file_name(char * path, file_list *list)
 
 	while((dir_entry = readdir(dirp)) != NULL)
 	{
-		if(strcmp(dir_entry->d_name, ".") || strcmp(dir_entry->d_name, ".."))
-		{
+		if(!strcmp(dir_entry->d_name, "."))
+			continue;
+		else if(!strcmp(dir_entry->d_name, ".."))
+			continue;
+		else {
 			strcat(whole_name, dir_entry->d_name);	
 			whole_name[strlen(whole_name)] = '\0';
 			//printf("sunqi9999999999999999999999999999999      %d\n", strlen(whole_name));
@@ -133,11 +135,33 @@ file_list *off_circle(file_list * list)
 	return next;
 }
 
+char **struct_a_array(char **file_names)
+{
+	int i;
+	
+	file_names = (char **)malloc(sizeof(char *) * FILE_NUM);		
 
-char **jose_sort(file_list *list)
+	for (i = 0; i < FILE_NUM; i++) 
+	{
+		file_names[i] = (char *)malloc(sizeof(char) * FILE_NAME_LEN);
+	}
+	return file_names;
+}
+
+void destruct_array(char **array)
+{
+	int i;
+	for (i = 0; i < FILE_NUM; i++) 
+	{
+		free(array[i]);
+		array[i] = NULL;
+	}
+	free(array);
+}
+
+int jose_sort(char **file_names, file_list *list)
 {
 	file_list *cur, *pre;
-	char file_names[FILE_NUM][FILE_NAME_LEN];
 	pre = list = to_circle(list);
 	cur = pre->next;
 
@@ -146,25 +170,26 @@ char **jose_sort(file_list *list)
 	int i = 0;
 	int cnt = 1;
 
-	while(cur->index != pre->index)
+	while(cur->index != cur->next->index)
 	{
-		if(cnt / key == 0)
+		printf("key = %d\n", key);
+		if(cnt % key == 0)
 		{
 			strcpy(file_names[i], cur->filename);
-			cur = delete_a_node(pre, cur->next);
+			cur = delete_a_node(pre, cur);
 			i++;
 			cnt = 1;
-			continue;
-		}
+		} else {
 			pre = cur;
 			cur = cur->next;
 
 			cnt++;
+		}
 	}
 	strcpy(file_names[i], cur->filename);
 	free(cur);
 	cur = NULL;
 
-	return file_names;
+	return i + 1;
 
 }

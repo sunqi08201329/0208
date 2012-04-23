@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 	}
 
 	char **file_names = NULL;
+	file_names = struct_a_array(file_names);
 
 	//file_list *read_file_name(char * path, file_list *list);
 	file_list *photo_list = NULL;
@@ -36,8 +37,7 @@ int main(int argc, char *argv[])
 	print_list(photo_list);
 
 	//char **jose_sort(char **file_names, file_list *list);
-	file_names = jose_sort(photo_list);
-	printf("hahahahhaha %s\n", file_names[0]);
+	jose_sort(file_names, photo_list);
 
 
 	int pid;		
@@ -71,16 +71,20 @@ int main(int argc, char *argv[])
 			{
 				display_string(str, i*wordsize, fb_inf.h/2, fb_inf, 0xFFFF00);
 				usleep(1000*1000);
-				display_jpeg_recangle("./src/photo/test.jpg", fb_inf, i*wordsize, fb_inf.h/2, strlen(str), wordsize);
+				display_jpeg_recangle(file_names[1], fb_inf, i*wordsize, fb_inf.h/2, strlen(str), wordsize);
 				if(time(NULL)%5 ==0)
 					break;
 			}
-			display_jpeg1("./src/photo/test3.jpg", fb_inf);
+			display_jpeg1(file_names[5], fb_inf);
 			j--;
 #endif
 		}
 				display_string("3s 后结束thanks", 100, fb_inf.h/2, fb_inf, 0xFFFF00);
 		sleep(3);
+		//void free_list(file_list * list);
+		//free_list(photo_list);
+		//char **struct_a_array(char **file_names);
+		destruct_array(file_names);
 	}
 	else{
 		int pid = fork();
