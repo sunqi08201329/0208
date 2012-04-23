@@ -20,7 +20,6 @@ $(objs):%.o:%.c
 link:
 	$(STATIC_LINK) lib$(lib_name).a $(objs)
 	$(CC) -shared -o lib$(lib_name).so $(objs)	
-	#$(CC) main.c -L$(LIBRARY_PATH) -l $(lib_name) -o main -I$(INCLUDE_PATH)
 
 clean:
 	-rm -rf *.o 

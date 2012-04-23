@@ -25,7 +25,7 @@ int display_jpeg1(char *filename, fb_info fb_inf)
 		for (y = 0; y < fb_inf.h; ++y){
 			fb_pixel(fb_inf, x, y, buf32[x + y * fb_inf.w]);
 		}
-		usleep(5*1000);
+		usleep(2*1000);
 	}
 
 	free(buf24);
@@ -48,7 +48,7 @@ int display_jpeg(char *filename, fb_info fb_inf)
 		for(x = 0; x < fb_inf.w; ++x){
 			fb_pixel(fb_inf, x, y, buf32[x + y * fb_inf.w]);
 		}
-		usleep(5*1000);
+		usleep(2*1000);
 	}
 	
 	free(buf24);

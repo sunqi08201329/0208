@@ -1,8 +1,8 @@
-#ifndef __COMMON_H__
-#define __COMMON_H__
+#ifndef __COMMON__H__
+#define __COMMON__H__
 
-#define PHOTO_PATH "./src/photo"
-#define MUSIC_PATH "./src/music"
+#define PHOTO_PATH "./src/photo/"
+#define MUSIC_PATH "./src/music/"
 typedef unsigned char u8_t;
 typedef unsigned short u16_t;
 typedef unsigned int u32_t;
@@ -49,9 +49,6 @@ extern int display_jpeg_recangle(char *filename, fb_info fb_inf, int sx, int sy,
 extern int init_ft (const char *file, int size);
 extern int display_string (const char *buf, int x, int y, fb_info fb_inf,u32_t color);
 
-
-/* ******************** mouse.c ******************** */
-extern int test_mouse(fb_info fb_inf);
 
 /* ******************** disp-basic.c ******************** */
 /* create jpeg middle data file */

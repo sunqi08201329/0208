@@ -1,3 +1,8 @@
+#include "common.h"
+#include "mouse.h"
+#include "music.h"
+#include "filename_list.h"
+
 #include <sys/mman.h>
 #include <string.h>
 #include <sys/wait.h>
@@ -7,24 +12,34 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include "common.h"
+//#define PHOTO_PATH "./src/photo/"
 
-char photo_path[32] = "./src/photo/";
-char font_path[32] = "./src/font/";
-char music_path[32] = "./src/music/";
+
+void handler(int signo);
 
 /* main function */
 int main(int argc, char *argv[]) 
 {
 
-	if (argc < 2)
-		argv[1] = strcat(photo_path, "test.jpg");
-
 	fb_info fb_inf;
+
 	if (init_fb(&fb_inf) < 0){
 		fprintf(stderr, "Error initial framebuffer\n");
 		return 1;
 	}
+
+	char **file_names = NULL;
+
+	//file_list *read_file_name(char * path, file_list *list);
+	file_list *photo_list = NULL;
+	photo_list = read_file_name(PHOTO_PATH, photo_list);
+	print_list(photo_list);
+
+	//char **jose_sort(char **file_names, file_list *list);
+	file_names = jose_sort(photo_list);
+	printf("hahahahhaha %s\n", file_names[0]);
+
+
 	int pid;		
 	if((pid = fork()) < 0){
 		fprintf(stderr, "fork error %s\n", strerror(errno));
@@ -35,7 +50,7 @@ int main(int argc, char *argv[])
 	int j = 1;
 		while(j){
 
-			display_jpeg("./src/photo/test.jpg", fb_inf);
+			display_jpeg(file_names[1], fb_inf);
 
 			//while(1);
 
@@ -66,14 +81,30 @@ int main(int argc, char *argv[])
 		}
 				display_string("3s 后结束thanks", 100, fb_inf.h/2, fb_inf, 0xFFFF00);
 		sleep(3);
-		system("killall -9 ./mp3");
 	}
 	else{
-			system("./mp3 1.mp3");
+		int pid = fork();
+		signal(SIGCHLD, handler);
+		if(pid == 0)
+			test_music("./src/music/1.mp3");
+		else{	
+			//int test_mouse(fb_info fb_inf);
+			test_mouse(fb_inf);
+		}
+
 	}
 
 	munmap(fb_inf.fbmem, fb_inf.w * fb_inf.h * fb_inf.bpp / 8);
 
 	return 0;
 }
-
+void handler(int signo)
+{
+	int status;
+	int pid;
+	if((pid = waitpid(-1, &status, WNOHANG)) > 0){
+		//printf("child %d died, parent will die\n",pid);
+		system("killall -9 ./main");
+	}
+	return;
+}

@@ -69,21 +69,6 @@ int fb_pixel(fb_info fb_inf, int x, int y, u32_t color)
 
 }
 
-/* painting horizontal */
-int fb_pixel_row(fb_info fb_inf, int x, int y, int len, u32_t color)
-{
-	int i;
-#if 1
-	for(i = x; i < len; i++){
-		fb_pixel(fb_inf,x+i, y, color);
-	}
-#else
-	/* FIXME: not */
-//	memset(fb_inf.fbmem + (y * fb_inf.w + x) * fb_inf.bpp/8, color, len * 
-#endif
-
-	return 0;
-}
 
 int fb_test(void)
 {
@@ -102,7 +87,6 @@ int fb_test(void)
 	/* line test*/
 //	p.x = 0; p.y = 200;
 //	p2.x = 1280, p2.y = 200;
-	fb_pixel_row(fb_inf, 0, 200, 1280, 0xFF0000);
 	
 
 	munmap(fb_inf.fbmem, fb_inf.w * fb_inf.h * fb_inf.bpp / 8);
