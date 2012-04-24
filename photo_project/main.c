@@ -18,7 +18,7 @@
 //typedef int (*disp_jpeg)(char *, fb_info);
 
 
-void handler(int signo);
+//void handler(int signo);
 
 /* main function */
 int main(int argc, char *argv[]) 
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 	if((pid = fork()) < 0){
 		fprintf(stderr, "fork error %s\n", strerror(errno));
 		exit(1);
-	}else if(pid > 0){
+	}else if(pid == 0){
 		//pid = waitpid(-1, &status, WNOHANG);
 
 		int j = 0;
@@ -97,12 +97,22 @@ srand(time(NULL));
 		destruct_array(file_names);
 	}
 	else{
-		int pid = fork();
-		signal(SIGCHLD, handler);
-		if(pid == 0)
+		int pid1 = fork();
+		//signal(SIGCHLD, handler);
+		if(pid1 == 0)
 			test_music("./src/music/1.mp3");
 		else{	
 			//int test_mouse(fb_info fb_inf);
+			int status;
+			printf("pid1 %d\n", pid1);
+			printf("pid %d\n", pid);
+			printf("getpid %d\n", getpid());
+
+			while(waitpid(-1, &status, WNOHANG) > 0)
+			{
+				kill(0, SIGINT);
+				raise(SIGINT);
+			}
 			test_mouse(fb_inf);
 		}
 
@@ -112,13 +122,10 @@ srand(time(NULL));
 
 	return 0;
 }
-void handler(int signo)
-{
-	int status;
-	int pid;
-	if((pid = waitpid(-1, &status, WNOHANG)) > 0){
-		//printf("child %d died, parent will die\n",pid);
-		system("killall -9 ./main");
-	}
-	return;
-}
+//void handler(int signo)
+//{
+//int status;
+//waitpid(-1, &status, WNOHANG);
+////printf("child %d died, parent will die\n",pid);
+//return;
+//////////}
