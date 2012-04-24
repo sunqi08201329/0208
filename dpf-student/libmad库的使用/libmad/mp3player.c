@@ -103,7 +103,7 @@ enum mad_flow input(void *data,
   int      copy_size;
 
   mp3fp = (mp3_file *)data;
-  if(mp3fp->fpos != mp3fp->flen)
+  if(mp3fp->fpos == mp3fp->flen)
   {
       unproc_data_size = stream->bufend - stream->next_frame;
       memcpy(mp3fp->fbuf, mp3fp->fbuf+mp3fp->fbsize-unproc_data_size, unproc_data_size);

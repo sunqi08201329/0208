@@ -11,7 +11,7 @@ typedef struct node{
 }file_list;
 
 
-void init(file_list *list);
+void init_list(file_list *list);
 
 file_list *make_a_node(char * filename, int index);
 
@@ -19,6 +19,9 @@ file_list *delete_a_node(file_list *pre, file_list *cur);
 
 void print_list(file_list * list);
 
+int max_index(file_list *list);
+
+file_list *get_start_pre(file_list *list);
 
 file_list *to_circle(file_list * list);
 

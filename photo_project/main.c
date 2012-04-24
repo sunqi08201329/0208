@@ -1,4 +1,5 @@
 #include "common.h"
+#include "disp_jpg.h"
 #include "mouse.h"
 #include "music.h"
 #include "filename_list.h"
@@ -13,6 +14,8 @@
 #include <stdlib.h>
 
 //#define PHOTO_PATH "./src/photo/"
+
+//typedef int (*disp_jpeg)(char *, fb_info);
 
 
 void handler(int signo);
@@ -34,10 +37,11 @@ int main(int argc, char *argv[])
 	//file_list *read_file_name(char * path, file_list *list);
 	file_list *photo_list = NULL;
 	photo_list = read_file_name(PHOTO_PATH, photo_list);
+	int photo_num ;
 	print_list(photo_list);
 
 	//char **jose_sort(char **file_names, file_list *list);
-	jose_sort(file_names, photo_list);
+	photo_num = jose_sort(file_names, photo_list);
 
 
 	int pid;		
@@ -47,11 +51,9 @@ int main(int argc, char *argv[])
 	}else if(pid > 0){
 		//pid = waitpid(-1, &status, WNOHANG);
 
-	int j = 1;
-		while(j){
-
-			display_jpeg(file_names[1], fb_inf);
-
+		int j = 0;
+		while(1){
+srand(time(NULL));
 			//while(1);
 
 #if 1
@@ -65,18 +67,26 @@ int main(int argc, char *argv[])
 				return 1;
 			}
 
+			//disp_jpeg disp_jpeg_func[] = {display_jpeg, display_jpeg1};
+			disp_jpeg_func[rand()%6](file_names[j], fb_inf);
+			display_string(file_names[1], 100, 100, fb_inf, 0xFFFF00);
+
+
 			int i;
 			char str[1024] = "您好 AKAEDU！";
 			for (i = 100; i <= fb_inf.w; i++) 
 			{
 				display_string(str, i*wordsize, fb_inf.h/2, fb_inf, 0xFFFF00);
 				usleep(1000*1000);
-				display_jpeg_recangle(file_names[1], fb_inf, i*wordsize, fb_inf.h/2, strlen(str), wordsize);
+				display_jpeg_recangle(file_names[j], fb_inf, i*wordsize, fb_inf.h/2, strlen(str), wordsize);
 				if(time(NULL)%5 ==0)
 					break;
 			}
-			display_jpeg1(file_names[5], fb_inf);
-			j--;
+			disp_jpeg_func[rand()%6](file_names[rand()%photo_num], fb_inf);
+			display_string(file_names[rand()%photo_num], 100, 100, fb_inf, 0xFFFF00);
+			j++;
+			if(j == photo_num)
+				j = 0;
 #endif
 		}
 				display_string("3s 后结束thanks", 100, fb_inf.h/2, fb_inf, 0xFFFF00);

@@ -5,6 +5,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+void init_list(file_list *list)
+{
+	file_list *move;
+	move = list;
+	while(move != NULL)
+	{
+		memset(move, 0, sizeof(file_list));
+	}
+}
 file_list *make_a_node(char * filename, int index)
 {
 	file_list *new;
@@ -91,7 +100,6 @@ file_list *read_file_name(char * path, file_list *list)
 		else {
 			strcat(whole_name, dir_entry->d_name);	
 			whole_name[strlen(whole_name)] = '\0';
-			//printf("sunqi9999999999999999999999999999999      %d\n", strlen(whole_name));
 			
 			if(list == NULL)
 			{
@@ -159,20 +167,56 @@ void destruct_array(char **array)
 	free(array);
 }
 
+int max_index(file_list *list)
+{
+	int max = 0;
+
+	file_list *move;
+	move = list;
+	
+	while(move->index < move->next->index)
+		move = move->next;
+
+	return move->index;
+
+}
+
+file_list *get_start_pre(file_list *list)
+{
+	file_list *start_pre;
+	start_pre = list;
+
+	srand(time(NULL));
+
+	int len;
+	int start;
+	
+	len = max_index(list);
+	start = (rand()%len + 1);
+	while(start_pre->next->index != start)
+	{
+		start_pre = start_pre->next;
+	}
+	return start_pre;
+}
+
 int jose_sort(char **file_names, file_list *list)
 {
 	file_list *cur, *pre;
-	pre = list = to_circle(list);
+
+	list = to_circle(list);
+	pre = get_start_pre(list);
+
 	cur = pre->next;
 
 	int key = time(NULL) % 9 + 1;
+	printf("key = %d\n", key);
 
 	int i = 0;
 	int cnt = 1;
 
 	while(cur->index != cur->next->index)
 	{
-		printf("key = %d\n", key);
 		if(cnt % key == 0)
 		{
 			strcpy(file_names[i], cur->filename);

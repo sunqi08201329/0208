@@ -15,6 +15,8 @@ typedef struct
 	u8_t *fbmem;
 }fb_info;
 
+/*  typedef int (*disp_jpeg)(char *, fb_info);*/
+
 /* ******************** fb.c ******************** */
 
 /* initial framebuf */
@@ -36,13 +38,6 @@ extern u32_t * rgb24to32(u8_t *buf24, fb_info jpeg_inf);
 extern u16_t * rgb24to16(u8_t *buf24, fb_info jpeg_inf);
 
 extern u8_t * scale24(u8_t *buf24, fb_info new_inf, fb_info jpeg_inf);
-
-
-/* ******************** disp_jpeg.c ******************** */
-/* display jpeg */
-extern int display_jpeg(char *filename, fb_info fb_inf);
-extern int display_jpeg1(char *filename, fb_info fb_inf);
-extern int display_jpeg_recangle(char *filename, fb_info fb_inf, int sx, int sy, int sizeofstr, int len_of_aword);
 
 
 /* ******************** font.c ******************** */
