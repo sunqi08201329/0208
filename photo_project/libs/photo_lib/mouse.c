@@ -87,6 +87,7 @@ int test_mouse(fb_info fb_inf)
 
 			m_x += mevent.x;
 			m_y += mevent.y;
+			if( >=
 			fb_drawcursor(fb_inf, m_x, m_y);
 
 			switch (mevent.button){
