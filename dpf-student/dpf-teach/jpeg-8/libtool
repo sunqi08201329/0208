@@ -64,8 +64,8 @@ pic_mode=default
 fast_install=yes
 
 # The host system.
-host_alias=
-host=i686-pc-linux-gnu
+host_alias=arm-linux
+host=arm-unknown-linux-gnu
 host_os=linux-gnu
 
 # The build system.
@@ -89,7 +89,7 @@ EGREP="/bin/grep -E"
 FGREP="/bin/grep -F"
 
 # A BSD- or MS-compatible name lister.
-NM="/usr/bin/nm -B"
+NM="/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/arm-linux-nm -B"
 
 # Whether we need soft or hard links.
 LN_S="ln -s"
@@ -123,19 +123,19 @@ deplibs_check_method="pass_all"
 file_magic_cmd="\$MAGIC_CMD"
 
 # The archiver.
-AR="ar"
+AR="arm-linux-ar"
 AR_FLAGS="cru"
 
 # A symbol stripping program.
-STRIP="strip"
+STRIP="arm-linux-strip"
 
 # Commands used to install an old-style archive.
-RANLIB="ranlib"
+RANLIB="arm-linux-ranlib"
 old_postinstall_cmds="chmod 644 \$oldlib~\$RANLIB \$oldlib"
 old_postuninstall_cmds=""
 
 # A C compiler.
-LTCC="gcc -std=gnu99"
+LTCC="arm-linux-gcc -std=gnu99"
 
 # LTCC compiler flags.
 LTCFLAGS="-g -O2"
@@ -240,7 +240,7 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/usr/lib/gcc/i486-linux-gnu/4.4.3 /usr/lib /lib /usr/lib/i486-linux-gnu"
+sys_lib_search_path_spec="/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/lib/gcc/arm-none-linux-gnueabi/4.4.1 /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/lib/gcc /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/arm-none-linux-gnueabi/lib /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/arm-none-linux-gnueabi/libc/lib /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/arm-none-linux-gnueabi/libc/usr/lib"
 
 # Run-time system search path for libraries.
 sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/mesa /lib/i486-linux-gnu /usr/lib/i486-linux-gnu /usr/lib/alsa-lib /usr/local/lib /home/akaedu/project/library "
@@ -255,18 +255,18 @@ dlopen_self=unknown
 dlopen_self_static=unknown
 
 # Commands to strip libraries.
-old_striplib="strip --strip-debug"
-striplib="strip --strip-unneeded"
+old_striplib="arm-linux-strip --strip-debug"
+striplib="arm-linux-strip --strip-unneeded"
 
 
 # The linker used to build libraries.
-LD="/usr/bin/ld"
+LD="/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/arm-none-linux-gnueabi/bin/ld"
 
 # Commands used to build an old-style archive.
 old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$oldlib"
 
 # A language specific compiler.
-CC="gcc -std=gnu99"
+CC="arm-linux-gcc -std=gnu99"
 
 # Is the compiler the GNU compiler?
 with_gcc=yes

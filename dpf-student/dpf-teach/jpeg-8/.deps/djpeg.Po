@@ -1,22 +1,39 @@
 djpeg.o: djpeg.c cdjpeg.h jinclude.h jconfig.h \
- /usr/lib/gcc/i486-linux-gnu/4.4.3/include/stddef.h /usr/include/stdlib.h \
- /usr/include/features.h /usr/include/bits/predefs.h \
- /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
- /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h \
- /usr/include/sys/types.h /usr/include/bits/types.h \
- /usr/include/bits/typesizes.h /usr/include/time.h /usr/include/endian.h \
- /usr/include/bits/endian.h /usr/include/bits/byteswap.h \
- /usr/include/sys/select.h /usr/include/bits/select.h \
- /usr/include/bits/sigset.h /usr/include/bits/time.h \
- /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
- /usr/include/alloca.h /usr/include/bits/stdlib.h /usr/include/stdio.h \
- /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
- /usr/lib/gcc/i486-linux-gnu/4.4.3/include/stdarg.h \
- /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h /usr/include/bits/stdio2.h \
- /usr/include/string.h /usr/include/xlocale.h /usr/include/bits/string.h \
- /usr/include/bits/string2.h /usr/include/bits/string3.h jpeglib.h \
- jmorecfg.h jerror.h cderror.h jversion.h /usr/include/ctype.h
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.1/include/stddef.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/stdlib.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/types.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/types.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/typesizes.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/time.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/endian.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/endian.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/byteswap.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/select.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/select.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigset.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/time.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/sysmacros.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/pthreadtypes.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/alloca.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/stdio.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/libio.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/_G_config.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/wchar.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.1/include/stdarg.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio_lim.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sys_errlist.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/string.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/xlocale.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string2.h \
+ jpeglib.h jmorecfg.h jerror.h cderror.h jversion.h \
+ /home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/ctype.h
 
 cdjpeg.h:
 
@@ -24,79 +41,71 @@ jinclude.h:
 
 jconfig.h:
 
-/usr/lib/gcc/i486-linux-gnu/4.4.3/include/stddef.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.1/include/stddef.h:
 
-/usr/include/stdlib.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/stdlib.h:
 
-/usr/include/features.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h:
 
-/usr/include/bits/predefs.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h:
 
-/usr/include/sys/cdefs.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h:
 
-/usr/include/bits/wordsize.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h:
 
-/usr/include/gnu/stubs.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h:
 
-/usr/include/gnu/stubs-32.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/types.h:
 
-/usr/include/sys/types.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/types.h:
 
-/usr/include/bits/types.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/typesizes.h:
 
-/usr/include/bits/typesizes.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/time.h:
 
-/usr/include/time.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/endian.h:
 
-/usr/include/endian.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/endian.h:
 
-/usr/include/bits/endian.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/byteswap.h:
 
-/usr/include/bits/byteswap.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/select.h:
 
-/usr/include/sys/select.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/select.h:
 
-/usr/include/bits/select.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigset.h:
 
-/usr/include/bits/sigset.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/time.h:
 
-/usr/include/bits/time.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/sysmacros.h:
 
-/usr/include/sys/sysmacros.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/pthreadtypes.h:
 
-/usr/include/bits/pthreadtypes.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/alloca.h:
 
-/usr/include/alloca.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/stdio.h:
 
-/usr/include/bits/stdlib.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/libio.h:
 
-/usr/include/stdio.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/_G_config.h:
 
-/usr/include/libio.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/wchar.h:
 
-/usr/include/_G_config.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.1/include/stdarg.h:
 
-/usr/include/wchar.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio_lim.h:
 
-/usr/lib/gcc/i486-linux-gnu/4.4.3/include/stdarg.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sys_errlist.h:
 
-/usr/include/bits/stdio_lim.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio.h:
 
-/usr/include/bits/sys_errlist.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/string.h:
 
-/usr/include/bits/stdio.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/xlocale.h:
 
-/usr/include/bits/stdio2.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string.h:
 
-/usr/include/string.h:
-
-/usr/include/xlocale.h:
-
-/usr/include/bits/string.h:
-
-/usr/include/bits/string2.h:
-
-/usr/include/bits/string3.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string2.h:
 
 jpeglib.h:
 
@@ -108,4 +117,4 @@ cderror.h:
 
 jversion.h:
 
-/usr/include/ctype.h:
+/home/akaedu/Friandlyarm_6410/Linux/usr/local/arm/4.4.1/bin/../arm-none-linux-gnueabi/libc/usr/include/ctype.h:
