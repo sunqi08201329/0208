@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
 	}else if(pid == 0){
 		//pid = waitpid(-1, &status, WNOHANG);
 
+				raise(SIGINT);
 		int j = 0;
 		while(1){
 srand(time(NULL));
@@ -110,8 +111,8 @@ srand(time(NULL));
 
 			while(waitpid(-1, &status, WNOHANG) > 0)
 			{
-				kill(0, SIGINT);
-				raise(SIGINT);
+				//kill(0, SIGINT);
+				//raise(SIGINT);
 			}
 			test_mouse(fb_inf);
 		}

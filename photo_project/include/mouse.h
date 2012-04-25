@@ -19,6 +19,8 @@ int mouse_parse(const u8_t *buf, mouse_event_t* mevent);
 int fb_restorecursor(fb_info fb_inf, int x, int y);
 int fb_drawcursor(fb_info fb_inf, int x, int y);
 
+int display_jpeg_view (char *filename, fb_info fb_inf, int k);
+
 int test_mouse(fb_info fb_inf);
 
 #endif
