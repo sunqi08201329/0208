@@ -85,9 +85,19 @@ int test_mouse(fb_info fb_inf)
 
 			fb_restorecursor(fb_inf, m_x, m_y);
 
-			m_x += mevent.x;
-			m_y += mevent.y;
-			if( >=
+			if(on_screen(fb_inf, m_x + mevent.x, m_y + mevent.y))
+			{
+					m_y += mevent.y;
+					m_x += mevent.x;
+			}
+			//else
+			//{
+			//if(m_x == 0 || m_x == fb_inf.w - 1 - 10)
+			//m_y += mevent.y;
+			//if(m_y == 0 || m_y == fb_inf.h - 1 - 17)
+			//m_x += mevent.x;
+			//}
+		
 			fb_drawcursor(fb_inf, m_x, m_y);
 
 			switch (mevent.button){
@@ -304,4 +314,12 @@ int display_jpeg_view (char *filename, fb_info fb_inf, int k)
 	free(buf32);
 
 	return 0;
+}
+
+int on_screen(fb_info fb_inf, int x, int y)
+{
+	if(x >= 0 && (x < fb_inf.w - 10) && y >= 0 && (y < fb_inf.h - 17))	
+		return 1;
+	else
+		return 0;
 }

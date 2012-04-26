@@ -323,7 +323,7 @@ int display_jpeg_recangle(char *filename, fb_info fb_inf, int sx, int sy, int si
 	u32_t *buf32 = rgb24to32(scale_buf, fb_inf);
 	int x, y;
 	for(x = sx; x < ex; ++x){
-		for (y = sy - len_of_aword - 1; y <= ey + 10; ++y){
+		for (y = sy - len_of_aword - 20; y <= ey + 20; ++y){
 			fb_pixel(fb_inf, x, y, buf32[x + y * fb_inf.w]);
 		}
 	}

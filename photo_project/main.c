@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error initial framebuffer\n");
 		return 1;
 	}
-
+//****************************photo
 	char **file_names = NULL;
 	file_names = struct_a_array(file_names);
 
@@ -42,7 +42,19 @@ int main(int argc, char *argv[])
 
 	//char **jose_sort(char **file_names, file_list *list);
 	photo_num = jose_sort(file_names, photo_list);
+//* ***************************font */
+	char **font_names = NULL;
+	font_names = struct_a_array(font_names);
 
+	//file_list *read_file_name(char * path, file_list *list);
+	file_list *font_list = NULL;
+	font_list = read_file_name(FONT_PATH, font_list);
+	int font_num ;
+	print_list(font_list);
+
+	//char **jose_sort(char **file_names, file_list *list);
+	font_num = jose_sort(font_names, font_list);
+//* **************************************** */
 
 	int pid;		
 	if((pid = fork()) < 0){
@@ -51,8 +63,9 @@ int main(int argc, char *argv[])
 	}else if(pid == 0){
 		//pid = waitpid(-1, &status, WNOHANG);
 
-				raise(SIGINT);
+		//raise(SIGINT);
 		int j = 0;
+		int wordsize = 50;
 		while(1){
 srand(time(NULL));
 			//while(1);
@@ -61,23 +74,30 @@ srand(time(NULL));
 			/* Test mouse */
 			//	test_mouse(fb_inf);
 
-			int wordsize = 50;
+			wordsize = 50;
 
-			if (init_ft("./src/font/mao.ttf", wordsize) != 0){
+			if (init_ft("./src/font/DroidSansFallback.ttf", wordsize) != 0){// "./src/font/DroidSansFallback.ttf",
+				fprintf(stderr, "Error initial font\n")	;
+				return 1;
+			}
+			char str[1024] = " ♪ ♫ ▶ ◀ ☺ ☻ ▣ ";
+			display_string(str, 10, fb_inf.h/2, fb_inf, 0xFFFFFF);
+			//disp_jpeg disp_jpeg_func[] = {display_jpeg, display_jpeg1};
+			disp_jpeg_func[rand()%6](file_names[j], fb_inf);
+			display_string(file_names[1], 100, 100, fb_inf, 0xFFFF00);
+			
+
+			if (init_ft(font_names[6], wordsize) != 0){// "./src/font/DroidSansFallback.ttf",
 				fprintf(stderr, "Error initial font\n")	;
 				return 1;
 			}
 
-			//disp_jpeg disp_jpeg_func[] = {display_jpeg, display_jpeg1};
-			disp_jpeg_func[rand()%6](file_names[j], fb_inf);
-			display_string(file_names[1], 100, 100, fb_inf, 0xFFFF00);
-
-
+			wordsize = 20;
 			int i;
-			char str[1024] = "您好 AKAEDU！";
+			char str1[1024] = "hello akaedu!";
 			for (i = 100; i <= fb_inf.w; i++) 
 			{
-				display_string(str, i*wordsize, fb_inf.h/2, fb_inf, 0xFFFF00);
+				display_string(str1, i*wordsize, fb_inf.h/2, fb_inf, 0xFFFFFF);
 				usleep(1000*1000);
 				display_jpeg_recangle(file_names[j], fb_inf, i*wordsize, fb_inf.h/2, strlen(str), wordsize);
 				if(time(NULL)%5 ==0)

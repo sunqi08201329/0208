@@ -69,6 +69,18 @@ int fb_pixel(fb_info fb_inf, int x, int y, u32_t color)
 
 }
 
+int fb_pixel_rectangle(fb_info fb_inf, int x, int y, int width, int high, u32_t color)
+{
+	int i, j;
+	for(i = 0; i < width; i++){
+		for (j = 0; j < high; j++) 
+		{
+			fb_pixel(fb_inf,i, j, color);
+		}
+	}
+
+	return 0;
+}
 
 int fb_test(void)
 {

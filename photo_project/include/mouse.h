@@ -21,6 +21,8 @@ int fb_drawcursor(fb_info fb_inf, int x, int y);
 
 int display_jpeg_view (char *filename, fb_info fb_inf, int k);
 
+int on_screen(fb_info fb_inf, int x, int y);
+
 int test_mouse(fb_info fb_inf);
 
 #endif

@@ -74,31 +74,36 @@ int fb_pixel(fb_info fb_inf, int x, int y, u32_t color)
 int fb_pixel_row(fb_info fb_inf, int x, int y, int len, u32_t color)
 {
 	int i;
-#if 1
-	for(i = x; i < len; i++){
+	for(i = 0; i < len ; i++)
+	{
 		fb_pixel(fb_inf,x+i, y, color);
 	}
 	
-#else
-	/* FIXME: not */
-//	memset(fb_inf.fbmem + (y * fb_inf.w + x) * fb_inf.bpp/8, color, len * 
-#endif
-
 	return 0;
 }
 int fb_pixel_col(fb_info fb_inf, int x, int y, int len, u32_t color)
 {
 	int i;
-#if 1
-	for(i = y; i < len; i++){
-		fb_pixel(fb_inf,x, y+i, color);
+	for(i = 0; i < len ; i++)
+	{
+		fb_pixel(fb_inf,x, y + i, color);
 	}
-#else
-	/* FIXME: not */
-//	memset(fb_inf.fbmem + (y * fb_inf.w + x) * fb_inf.bpp/8, color, len * 
-#endif
 
 	return 0;
+}
+int fb_pixel_unfold(fb_info fb_inf, int x, int y, int per_h, u32_t color)
+{
+	int i, j;
+	
+	for (i = 0; i < x; i++) 
+	{
+		fb_pixel_col(fb_inf, i, 0, per_h - i * per_h / x, 0xFFFFFFFF);	// per_h - i * per_h/x,
+	}
+
+	for (j = 0; j < y; j++) 
+	{
+		fb_pixel_row(fb_inf, 0, j, fb_inf.w, 0xFFFFFFFF);
+	}
 }
 int fb_pixel_rectangle(fb_info fb_inf, int x, int y, int width, int high, u32_t color)
 {
@@ -136,9 +141,36 @@ int fb_test(void)
 	/* line test*/
 //	p.x = 0; p.y = 200;
 //	p2.x = 1280, p2.y = 200;
-	fb_pixel_rectangle(fb_inf, 0, 0, fb_inf.w, fb_inf.h, 0x00FF00);
-	fb_pixel_row(fb_inf, 0, fb_inf.h/2, fb_inf.w, 0xFF0000);
-	fb_pixel_col(fb_inf, fb_inf.w/2, 0, fb_inf.h, 0xFF0000);
+	fb_pixel_rectangle(fb_inf, 0, 0, fb_inf.w, fb_inf.h, 0xAAAAFF);
+	fb_pixel_rectangle(fb_inf, 0, 0, fb_inf.w, fb_inf.h/4, 0x0);
+
+	int i;
+	for (i = 0; i < fb_inf.h/4; i++) 
+	{
+		fb_pixel_unfold(fb_inf, i, i, fb_inf.h/4, 0x0);
+
+		usleep(10*1000);
+	}
+	for (i = 0; i < fb_inf.h/4; i++) 
+	{
+		fb_pixel_row(fb_inf, i, fb_inf.h + 4, 0xFFFFFFFF);
+
+		usleep(10*1000);
+	}
+	for (i = 0; i < fb_inf.h/4; i++) 
+	{
+		fb_pixel_unfold(fb_inf, i, i, fb_inf.h/4, 0x0);
+
+		usleep(10*1000);
+	}
+	for (i = 0; i < fb_inf.h/4; i++) 
+	{
+		fb_pixel_row(fb_inf, i, fb_inf.h + 4, 0xFFFFFFFF);
+
+		usleep(10*1000);
+	}
+	//fb_pixel_row(fb_inf, 0, fb_inf.h/2, fb_inf.w, 0xFF0000);
+	//fb_pixel_col(fb_inf, fb_inf.w/2, 0, fb_inf.h, 0xFF0000);
 
 	
 

@@ -20,6 +20,10 @@ extern int init_fb(fb_info *fb_inf);
 
 /* drawing pixel */
 extern int fb_pixel(fb_info fb_inf, int x, int y, u32_t color);
+int fb_pixel_unfold(fb_info fb_inf, int x, int y, int per_h, u32_t color);
+int init_fb(fb_info *fb_inf);
+int fb_pixel_row(fb_info fb_inf, int x, int y, int len, u32_t color);
+int fb_pixel(fb_info fb_inf, int x, int y, u32_t color);
 
 /* Framebuffer Test */
 int fb_test(void);
